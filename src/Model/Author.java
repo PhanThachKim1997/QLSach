@@ -2,7 +2,7 @@ package Model;
 
 import java.util.Objects;
 
-public class Author extends Date{
+public class Author{
     private String nameAuthor;
     private Date date;
 

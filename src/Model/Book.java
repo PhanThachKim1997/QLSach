@@ -2,7 +2,7 @@ package Model;
 
 import java.util.Objects;
 
-public class Book extends Author{
+public class Book {
     private String nameBook;
     int price, yearBook;
     Author author = new Author();
