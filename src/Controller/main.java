@@ -19,6 +19,7 @@ public class main {
         OutputBook outputBook = new OutputBook();
         FindBook findBook = new FindBook();
         ArrayList<Book> books = new ArrayList<>();
+        SaleBook saleBook = new SaleBook();
         String YN;
         while(true){
             books.add(inputBook());
@@ -44,9 +45,7 @@ public class main {
         int rateSale = Integer.parseInt(sc.nextLine());
 
         Book sales = new Book();
-        sales = books.get(n);
         System.out.println("Giá sách: "+sales.getPrice());
-        int priceSale = sales.getPrice() -sales.getPrice()*rateSale/100;
-        System.out.println("Giá sách sau khi giảm: "+priceSale);
+        System.out.println("Giá sách sau khi giảm: "+saleBook.saleBook(sales.getPrice(),rateSale));
     }
 }
