@@ -1,34 +1,52 @@
 package Controller;
 
 import Model.Author;
+import Model.Book;
 import Model.Date;
 
+import java.util.ArrayList;
+import java.util.Arrays;
 import java.util.Scanner;
+
+import static Controller.InputBook.inputBook;
+import static Controller.OutputBook.outputBook;
 
 public class main {
     public static void main(String[] args) {
         Scanner sc = new Scanner(System.in);
-
-    // Khởi tạo đối tượng Date và nhập date
-        Date date = new Date();
-        int day,month,year;
-        System.out.print("Nhập năm: ");
-        date.setYear();
-        System.out.print("Nhập tháng: ");
-        date.setMonth();
-        System.out.print("Nhập ngày: ");
+        //Nhập và xuất sách
+        InputBook inputBook= new InputBook();
+        OutputBook outputBook = new OutputBook();
+        FindBook findBook = new FindBook();
+        ArrayList<Book> books = new ArrayList<>();
+        String YN;
         while(true){
-            date.setDay();
-            if(date.checkDay(date.getDay())){
+            books.add(inputBook());
+            System.out.print("Bạn có muốn nhập thêm sách không? (Y/N): ");
+            YN = sc.nextLine();
+            if(!inputBook.stopInputbook(YN)){
                 break;
-            }else {
-                System.out.println("Lỗi ngày!!! Nhập lại: ");
             }
         }
-        System.out.println("--------------------------");
-        System.out.println("Nhập tên tác giả");
-        String au = sc.nextLine();
-        Author author = new Author(au,date);
-        System.out.println(author);
+        outputBook(books);
+        //Tìm kiếm sách theo tên sách, giá tiền, năm SX, tên tác giả.
+        System.out.println("Nhập vào keyword để tìm kiếm: ");
+        String chuoi = sc.nextLine();
+        for(Book book:books){
+            if(findBook.findBook(book,chuoi)){
+                System.out.println(book);
+                System.out.println("-----------");
+            }
+        }
+        System.out.println("Nhập vào stt sách muốn giảm giá: ");
+        int n = Integer.parseInt(sc.nextLine());
+        System.out.println("Nhập % muốn giảm giá: ");
+        int rateSale = Integer.parseInt(sc.nextLine());
+
+        Book sales = new Book();
+        sales = books.get(n);
+        System.out.println("Giá sách: "+sales.getPrice());
+        int priceSale = sales.getPrice() -sales.getPrice()*rateSale/100;
+        System.out.println("Giá sách sau khi giảm: "+priceSale);
     }
 }

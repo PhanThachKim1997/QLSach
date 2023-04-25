@@ -6,6 +6,9 @@ public class Author extends Date{
     private String nameAuthor;
     private Date date;
 
+    public Author() {
+    }
+
     public Author(String nameAuthor, Date date) {
         this.nameAuthor = nameAuthor;
         this.date = date;
