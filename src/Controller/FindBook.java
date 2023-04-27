@@ -26,11 +26,10 @@ public class FindBook {
                 if(book.getPrice() == priceBook){
                     return true;
                 }
-
             }else {
                 if(book.getNameBook().equals(chuoi)){
                     return true;
-                }else if(book.getNameAuthor().equals(chuoi)){
+                }else if(book.getAuthor().getNameAuthor().equals(chuoi)){
                     return true;
                 }
             }
